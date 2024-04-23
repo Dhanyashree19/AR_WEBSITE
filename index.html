@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Anatomy</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to right, #636a70 0%, #3b4142 100%);
+        }
+
+        .main-container {
+            display: flex;
+            height: 65vh; /* Full viewport height */
+
+        }
+
+        .info-section {
+            flex: 1;
+            background-image: linear-gradient(to right, #434343 0%, black 100%); 
+            padding: 15px;
+            text-align: center;
+            color: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .corner-video-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden; /* Hide any overflowing video content */
+        }
+
+        .corner-video {
+            width: 100%;
+            height: 100%; /* Cover entire container */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+
+        h1 {
+            font-size: 70px;
+            color: #e0d9d9;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: aliceblue;
+        }
+        
+        
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+            
+            
+        }
+
+        .body-part-button {
+            padding: 25px 35px;
+            background-color: #191a19;
+            color: #f3efef;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .body-part-button:hover {
+            background-color: #080808;
+            transform: translateY(-2px);
+        }
+
+        #pic{
+            display: flex;
+            flex-direction: row;
+            margin: 30px;
+            position: relative;
+            
+        }
+
+         #body-part-info {
+            font-size: 25px;
+            color: #fcfbfb;
+            line-height: 1.5;
+            margin: 20px;
+            text-align: center;
+           
+        }
+
+        #body-part-image {
+            max-width: 10%;
+            height: 10%;
+            margin: 20px;
+           
+        } 
+
+      
+
+#scan-text {
+    position: absolute;
+    top: -50px;
+    left: 6%;
+    transform: translateX(-50%);
+    background-color: #504e50;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    animation: blink 1s infinite alternate; /* Blinking animation */
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="info-section">
+            <h1>Explore Human Anatomy with AR</h1>
+            <p>Embark on an extraordinary journey through the intricate wonders of the human body. 
+                Our meticulously crafted 3D models reveal the secrets of the heart, the rhythm of the lungs,
+                 and the complexity of the brain. Whether you’re a student, professional, or simply a curious mind, 
+                 our dynamic platform invites you to explore anatomy like never before. Join a global community of 
+                 learners, educators, and enthusiasts. Let curiosity guide you, and let wonder fuel your journey.
+                  Welcome aboard!</p>
+
+                  
+        </div>
+        <div class="corner-video-container">
+            <video class="corner-video" autoplay loop muted>
+                <source src="ani.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <button class="body-part-button" onclick="showBodyPart('liver')">Liver</button>
+        <button class="body-part-button" onclick="showBodyPart('eye')">Eye</button>
+        <button class="body-part-button" onclick="showBodyPart('brain')">Brain</button>
+    </div>
+    <div id="pic">
+    <p id="scan-text">Scan here !!!</p>
+    <img class="body-part-image" id="body-part-image" src="" >
+    <p id="body-part-info">Select the body part to learn more!!...</p>
+</div>
+    <!-- Rest of your HTML -->
+    <script>
+        const infoDiv = document.getElementById('body-part-info');
+        const imageDiv = document.getElementById('body-part-image');
+        const scanText = document.getElementById('scan-text');
+
+        scanText.style.display = 'none';
+
+        function showBodyPart(part) {
+            switch (part) {
+                case 'liver':
+                    infoDiv.textContent = "The liver is an essential organ for detoxification and metabolism.The liver, with its lobes and segments, is a vital organ performing multiple functions crucial for our well-being. Its hepatocytes manage metabolism and detoxification. Bile ducts transport bile for fat digestion, while the portal vein and hepatic artery provide blood supply. The gallbladder stores bile. Sinusoids facilitate nutrient exchange. Understanding these parts reveals the liver's significance in maintaining health. Scan to explore much better!!"; // Your liver description
+                    imageDiv.src = './Liver_AR.png'; // Path to your liver image
+                    break;
+                case 'eye':
+                    infoDiv.textContent = 'The eye consists of the conjunctiva (which lubricates and protects), the sclera (providing stability), and the iris (regulating light entry). Common eye disorders include conjunctivitis and subconjunctival hemorrhages. The brain, specifically the cerebrum, coordinates movement, regulates temperature, and enables cognitive functions. The cerebral cortex, covering the cerebrum, processes information and comprises about half of the brain’s weight. Both structures are essential for our well-being and perception of the world around us. Scan to explore much better!!';
+                    imageDiv.src = './Eye.png'; // Placeholder image
+                    break;
+                case 'brain':
+                    infoDiv.textContent = 'The brain, a complex organ, controls thought, memory, emotion, and every process that regulates our body. Together with the spinal cord, it forms the central nervous system (CNS). Comprising about 3 pounds in the average adult, the brain is approximately 60% fat. The remaining 40% consists of water, protein, carbohydrates, and salts. Unlike a muscle, the brain contains blood vessels and nerves, including neurons and glial cells. It coordinates movement, regulates temperature, and enables cognitive functions. Scan to explore much better!!';
+                    imageDiv.src = './Brain.png'; // Placeholder image
+                    break;
+                default:
+                    infoDiv.textContent = 'Select a body part to learn more.';
+                    imageDiv.src = '';
+            }
+            if (part == 'default') {
+        scanText.style.display = 'none';
+    } else {
+        scanText.style.display = 'block';
+    }
+        }
+
+       
+    </script>
+</body>
+</html>
+
